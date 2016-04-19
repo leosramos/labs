@@ -1,0 +1,42 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:form id="ponto_transmissao_list_form_id">
+		<h:panelGroup
+			layout="block"
+			id="ponto_transmissao_list_body_id"
+			style="padding: 5px">
+			<h:panelGroup styleClass="ui-grid ui-grid-responsive">
+				<h:panelGroup styleClass="ui-grid-row">
+					<ui:repeat
+						var="ponto"
+						value="#{pontoTransmissaoListMB.resultList}">
+						<h:panelGroup styleClass="ui-grid-col-3">
+							<h:panelGroup
+								layout="block"
+								styleClass="thumbnail">
+								<h:panelGroup
+									style="display:block; margin-top: 8px;background-color: #ABC2D6;"
+									layout="block">
+									<h:outputText
+										value="#{ponto.nome}"
+										styleClass="caption"
+										title="#{ponto.nome}" />
+								</h:panelGroup>
+								<h:outputText
+									value="#{fn:length(ponto.locaisVotacao)} Locais de Votação"
+									styleClass="item"
+									style="display:block" />
+							</h:panelGroup>
+							<p:commandLink value="Editar" action="#{pontoTransmissaoEditDialogMB.load(ponto.id)}"/>
+						</h:panelGroup>
+					</ui:repeat>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:form>
+</ui:composition>

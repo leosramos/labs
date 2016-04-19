@@ -1,0 +1,52 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/main.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<!-- LEFT HEADER -->
+	<ui:define name="left.header">
+	</ui:define>
+
+	<!-- LEFT BODY -->
+	<ui:define name="left.body">
+	</ui:define>
+
+	<!-- LEFT FOOTER -->
+	<ui:define name="left.footer">
+	</ui:define>
+
+	<!-- CENTER TOOLBAR LEFT -->
+	<ui:define name="center.toolbar.left">
+		<p:commandButton
+			value="Novo"
+			action="#{pontoTransmissaoEditDialogMB.create}"></p:commandButton>
+	</ui:define>
+
+	<!-- CENTER.DETAIL -->
+	<ui:define name="center.detail">
+	</ui:define>
+
+	<!-- CENTER BODY -->
+	<ui:define name="center.body">
+		<ui:include src="/view/pontoList.xhtml" />
+	</ui:define>
+
+	<!-- RIGHT HEADER -->
+	<ui:define name="right.header">
+	</ui:define>
+
+	<!-- RIGHT BODY -->
+	<ui:define name="right.body">
+	</ui:define>
+
+	<!-- DOCUMENT BODY -->
+	<ui:define name="document.body">
+		<ui:include src="/view/pontoEditDialog.xhtml" />
+		<ui:include src="/view/pontoLocalVotacaoSelectionDialog.xhtml" />
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<h:form id="top_toolbar_form_id">
+		<p:toolbar id="top_toolbar_id" styleClass="top-toolbar" style="border-radius: 0px; border:0px; padding:0px">
+			<p:toolbarGroup align="left">
+				<h:panelGroup layout="block" style="width: 250px; height: 48px; display:inline-block; border-right: 1px solid rgba(0, 0, 0, 0.2)">
+					<p:commandLink ajax="false" style="border: 0 none;display: inline-block;padding: 0; width: 100%; text-indent: 5px"
+						action="/pages/processoavaliacao/index.jsf?faces-redirect=true">
+						<p:graphicImage library="images" name="logo-aelis-2016.png" height="38px" style="margin-top: 5px;" />
+						<h:panelGroup >
+							<!-- 
+							<h:outputText value="ELIS" style="font-size: 22px; color: #eee; font-weight: 600; text-shadow: 0 1px 0 #000;line-height: 48px; vertical-align: top " />
+							 -->
+							 <!-- 
+							<h:outputText value="" style="font-size: 11px; color: yellow; font-weight: 500;line-height: 54px; vertical-align: top " />
+							  -->
+						</h:panelGroup>
+					</p:commandLink>
+				</h:panelGroup>
+				<ui:insert name="search" />
+			</p:toolbarGroup>
+		</p:toolbar>
+	</h:form>
+</ui:composition>

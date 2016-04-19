@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form id="center_toolbar_form_id">
+		<p:toolbar id="center_toolbar_id" styleClass="center-toolbar" style="border-radius: 0px; border-left:0px; border-top:0px; border-right:0px">
+			<p:toolbarGroup align="left">
+				<ui:insert name="center.toolbar.left" />
+			</p:toolbarGroup>
+			<p:toolbarGroup align="right">
+				<ui:insert name="center.toolbar.right" />
+			</p:toolbarGroup>
+		</p:toolbar>
+	</h:form>
+
+</ui:composition>

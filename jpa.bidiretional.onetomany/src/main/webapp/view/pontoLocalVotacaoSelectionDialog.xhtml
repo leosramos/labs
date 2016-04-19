@@ -1,0 +1,93 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:form id="ponto_local_votacao_selection_dialog_form_id">
+		<p:dialog
+			id="ponto_local_votacao_selection_dialog_id"
+			resizable="false"
+			draggable="true"
+			dynamic="false"
+			widgetVar="ponto_local_votacao_selection_dialog_wvar"
+			width="550"
+			closable="false"
+			modal="true"
+			showEffect="fade">
+			<f:facet name="header">
+				<h:panelGroup id="ponto_local_votacao_selection_dialog_header_id">
+					<h:outputText value="Alterar Locais de Votação" />
+				</h:panelGroup>
+			</f:facet>
+			<h:panelGrid
+				id="ponto_local_votacao_selection_dialog_body_id"
+				columns="1"
+				cellpadding="0"
+				cellspacing="0"
+				width="100%"
+				style="vertical-align:top"
+				columnClasses="c1">
+				<!-- LOCAIS DE VOTAÇÃO DISPONÍVEIS -->
+				<h:outputText value="Locais de Votação Disponíveis (#{fn:length(pontoLocalVotacaoSelectionDialogMB.model.source)}):" />
+				<h:panelGroup
+					layout="block"
+					style="max-height: 150px; min-height: 150px; overflow-y:auto; border: 1px solid #ddd; padding: 4px">
+					<ui:repeat
+						var="lv"
+						value="#{pontoLocalVotacaoSelectionDialogMB.model.source}">
+						<h:panelGroup
+							layout="block"
+							style="display:block; margin-top: 5px; margin-bottom: 5px">
+							<h:outputText
+								value="#{lv.nome}"
+								style="font-size: 13px;max-width:400px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;" />
+							<p:commandLink
+								value="Selecionar"
+								action="#{pontoLocalVotacaoSelectionDialogMB.addTargetRemoveSource(lv)}"
+								styleClass="button-cancel"
+								style="float:right;"
+								process="@this" />
+						</h:panelGroup>
+					</ui:repeat>
+				</h:panelGroup>
+				<p:spacer height="10" />
+				<!-- LOCAIS DE VOTAÇÃO SELECIONADOS -->
+				<h:outputText value="Locais de Votação Selecionados (#{fn:length(pontoLocalVotacaoSelectionDialogMB.model.target)}):" />
+				<h:panelGroup
+					layout="block"
+					style="max-height: 150px; min-height: 150px; overflow-y:auto; border: 1px solid #ddd; padding: 4px">
+					<ui:repeat
+						var="lv"
+						value="#{pontoLocalVotacaoSelectionDialogMB.model.target}">
+						<h:panelGroup
+							layout="block"
+							style="display:block; margin-top: 5px; margin-bottom: 5px">
+							<h:outputText
+								value="#{lv.nome}"
+								style="font-size: 13px;max-width:400px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;" />
+							<p:commandLink
+								value="Remover"
+								action="#{pontoLocalVotacaoSelectionDialogMB.removeTargetAddSource(lv)}"
+								styleClass="button-cancel"
+								style="float:right;"
+								process="@this" />
+						</h:panelGroup>
+					</ui:repeat>
+				</h:panelGroup>
+			</h:panelGrid>
+			<f:facet name="footer">
+				<h:panelGroup id="ponto_local_votacao_selection_dialog_footer_id">
+					<!-- <p:commandButton value="Salvar" action="#{solicitacaoEditDialogMB.save()}" process="@form" styleClass="button-save" /> -->
+					<p:commandButton
+						value="Concluir"
+						action="#{pontoLocalVotacaoSelectionDialogMB.done()}"
+						styleClass="button-cancel"
+						process="@this" />
+				</h:panelGroup>
+			</f:facet>
+		</p:dialog>
+
+	</h:form>
+</ui:composition>

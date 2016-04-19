@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+<f:view
+	contentType="text/html"
+	locale="#{locales.currentLocale}"
+	encoding="UTF-8" />
+
+<h:head>
+	<title>AELIS-2016</title>
+	<h:outputStylesheet
+		library="css"
+		name="layout.css" />
+	<h:outputStylesheet
+		library="css"
+		name="app.css" />
+	<h:outputStylesheet
+		library="css"
+		name="font.css" />
+	<h:outputStylesheet
+		library="css/font-awesome-4.5.0/css"
+		name="font-awesome.min.css" />
+	<h:outputScript
+		library="js"
+		name="primefaces-locale-pt_br.js" />
+	<h:outputScript
+		library="js"
+		name="app.js" />
+
+</h:head>
+
+<h:body id="body_id">
+
+	<!-- *** -->
+	<!-- TOP -->
+	<!-- *** -->
+	<h:panelGroup
+		id="top_id"
+		layout="block"
+		styleClass="top">
+		<ui:include src="/view/application/top.xhtml" />
+	</h:panelGroup>
+
+	<!-- CONTAINER -->
+	<h:panelGroup
+		id="container_id"
+		layout="block"
+		styleClass="container">
+
+		<!-- **** -->
+		<!-- LEFT -->
+		<!-- **** -->
+		<h:panelGroup
+			layout="block"
+			styleClass="left"
+			rendered="#{layout.rendered['left']}">
+			<!-- LEFT CONTAINER -->
+			<h:panelGroup
+				layout="block"
+				styleClass="left-container">
+				<h:panelGroup
+					id="left_header_id"
+					layout="block"
+					rendered="#{layout.rendered['left.header']}"
+					styleClass="left-header">
+					<!-- LEFT HEADER -->
+					<ui:insert name="left.header" />
+				</h:panelGroup>
+				<!-- LEFT BODY CONTAINER -->
+				<h:panelGroup
+					layout="block"
+					styleClass="left-body-container">
+					<h:panelGroup
+						id="left_body_id"
+						layout="block"
+						styleClass="left-body">
+						<!-- LEFT BODY -->
+						<ui:insert name="left.body" />
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup
+					id="left_footer_id"
+					layout="block"
+					styleClass="left-footer">
+					<!-- LEFT FOOTER -->
+					<ui:insert name="left.footer" />
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<!-- ******* -->
+		<!-- CENTER -->
+		<!-- ******* -->
+		<h:panelGroup
+			layout="block"
+			styleClass="center">
+			<!-- CENTER CONTAINER -->
+			<h:panelGroup
+				layout="block"
+				styleClass="center-container">
+				<!-- CENTER HEADER -->
+				<h:panelGroup
+					id="center_header_id"
+					layout="block"
+					styleClass="center-header"
+					rendered="#{layout.rendered['center.header']}">
+					<!-- CENTER TOOLBAR -->
+					<h:form id="center_toolbar_form_id">
+						<p:toolbar
+							id="center_toolbar_id"
+							styleClass="center-toolbar"
+							style="border-radius: 0px; border-left:0px; border-top:0px; border-right:0px">
+							<p:toolbarGroup align="left">
+								<!-- CENTER TOOLBAR LEFT -->
+								<ui:insert name="center.toolbar.left" />
+							</p:toolbarGroup>
+							<p:toolbarGroup align="right">
+								<!-- CENTER TOOLBAR RIGHT -->
+								<ui:insert name="center.toolbar.right" />
+							</p:toolbarGroup>
+						</p:toolbar>
+					</h:form>
+				</h:panelGroup>
+				<!-- CENTER DETAIL -->
+				<h:panelGroup
+					id="center_detail_id"
+					layout="block"
+					styleClass="center-detail"
+					rendered="#{layout.rendered['center.detail']}">
+					<ui:insert name="center.detail" />
+				</h:panelGroup>
+				<!-- CENTER BODY CONTAINER -->
+				<h:panelGroup
+					layout="block"
+					styleClass="center-body-container">
+					<!-- CENTER BODY -->
+					<h:panelGroup
+						id="center_body_id"
+						layout="block"
+						styleClass="center-body">
+						<ui:insert name="center.body" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<!-- ***** -->
+		<!-- RIGHT -->
+		<!-- ***** -->
+		<h:panelGroup
+			layout="block"
+			styleClass="right"
+			rendered="#{layout.rendered['right']}">
+			<h:panelGroup
+				id="right_header_id"
+				layout="block"
+				styleClass="right-header">
+				<!-- RIGHT HEADER -->
+				<ui:insert name="right.header" />
+			</h:panelGroup>
+			<hr style="border: 1px solid #ddd" />
+			<h:panelGroup
+				id="right_body_id"
+				layout="block"
+				styleClass="right-body">
+				<!-- RIGHT BODY -->
+				<ui:insert name="right.body" />
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
+
+	<!-- DOCUMENT BODY -->
+	<ui:insert name="document.body" />
+
+	<!-- APPLICATION INFO -->
+	<p:growl id="growl_id" />
+
+	<!-- APPLICATION.ERROR -->
+	<h:form id="error_form_id">
+		<p:dialog
+			id="error_id"
+			header="Aviso"
+			closable="false"
+			resizable="false"
+			widgetVar="error_wvar"
+			modal="true">
+			<h:panelGrid
+				id="error_body_id"
+				columns="2"
+				style="max-width: 600px">
+				<h:messages />
+			</h:panelGrid>
+			<f:facet name="footer">
+				<p:commandButton
+					value="Fechar"
+					onclick="PF('error_wvar').hide(); return false"
+					process="@this" />
+			</f:facet>
+		</p:dialog>
+	</h:form>
+
+</h:body>
+</html>

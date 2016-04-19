@@ -1,0 +1,89 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:form id="ponto_transmissao_edit_dialog_form_id">
+		<p:dialog
+			id="ponto_transmissao_edit_dialog_id"
+			resizable="false"
+			draggable="true"
+			dynamic="true"
+			widgetVar="ponto_transmissao_edit_dialog_wvar"
+			width="850"
+			closable="false"
+			modal="true"
+			showEffect="fade">
+
+			<!-- HEADER -->
+			<f:facet name="header">
+				<h:panelGroup id="ponto_transmissao_edit_dialog_header_id">
+					<h:outputText value="Gerenciamento de Pontos de Transmissão " />
+				</h:panelGroup>
+			</f:facet>
+			<!-- BODY -->
+			<h:panelGrid
+				id="ponto_transmissao_edit_dialog_body_id"
+				columns="1"
+				cellpadding="0"
+				cellspacing="0"
+				width="100%"
+				style="vertical-align:top"
+				columnClasses="c1,c2">
+
+				<!-- NOME DO PONTO -->
+				<h:outputText value="Nome do Ponto: " />
+				<p:inputText
+					value="#{pontoTransmissaoEditDialogMB.bean.nome}"
+					style="width: 390px; " />
+
+				<!-- LOCAIS DE VOTAÇÃO -->
+				<h:panelGroup id="lvlist_id">
+					<h:outputText value="Locais de Votação Associdados ao Ponto (#{fn:length(pontoTransmissaoEditDialogMB.bean.locaisVotacao)})" />
+					<p:commandLink
+						value="Alterar"
+						action="#{pontoLocalVotacaoSelectionDialogMB.open}"
+						styleClass="button-cancel"
+						process="@this" />
+					<h:panelGroup
+						layout="block"
+						style="max-height: 150px; min-height: 150px; overflow-y:auto; border: 1px solid #ddd; padding: 4px">
+						<p:dataList
+							var="lv"
+							value="#{pontoTransmissaoEditDialogMB.bean.locaisVotacao}">
+							<p:column>
+								<h:panelGroup
+									layout="block"
+									style="display:block; margin-top: 5px; margin-bottom: 5px">
+									<h:outputText
+										value="#{lv.nome}"
+										style="font-size: 13px" />
+								</h:panelGroup>
+							</p:column>
+						</p:dataList>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGrid>
+			<f:facet name="footer">
+				<h:panelGroup id="ponto_transmissao_edit_dialog_footer_id">
+					<!-- SALVAR -->
+					<p:commandButton
+						value="Salvar"
+						action="#{pontoTransmissaoEditDialogMB.save()}"
+						process="@form"
+						styleClass="button-save" />
+					<h:outputText value="ou" />
+					<!-- FECHAR -->
+					<p:commandLink
+						value="Fechar"
+						action="#{pontoTransmissaoEditDialogMB.cancel()}"
+						styleClass="button-cancel"
+						process="@this" />
+				</h:panelGroup>
+			</f:facet>
+		</p:dialog>
+	</h:form>
+
+</ui:composition>

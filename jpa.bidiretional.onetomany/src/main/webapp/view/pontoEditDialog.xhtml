@@ -44,7 +44,7 @@
 					<h:outputText value="Locais de Votação Associdados ao Ponto (#{fn:length(pontoTransmissaoEditDialogMB.bean.locaisVotacao)})" />
 					<p:commandLink
 						value="Alterar"
-						action="#{pontoLocalVotacaoSelectionDialogMB.open}"
+						action="#{pontoLocalVotacaoSelectionDialogMB.load(pontoTransmissaoEditDialogMB.bean)}"
 						styleClass="button-cancel"
 						process="@this" />
 					<h:panelGroup

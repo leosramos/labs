@@ -9,7 +9,7 @@
 		<class>br.gov.frameworkdemoiselle.security.RequiredRoleInterceptor</class>
 		<class>br.gov.frameworkdemoiselle.exception.ExceptionHandlerInterceptor</class>
 		<!-- JBASE -->
-		<class>br.jus.tre_pa.jbase.jsf.workflow.interceptor.EventInterceptor</class>
+		<class>br.jus.tre_pa.jbase.jsf.workflow.interceptor.UIActionInterceptor</class>
 		<class>br.jus.tre_pa.jbase.jsf.workflow.interceptor.UpdateBodyInterceptor</class>
 		<class>br.jus.tre_pa.jbase.jsf.workflow.interceptor.UpdateFooterInterceptor</class>
 		<class>br.jus.tre_pa.jbase.jsf.workflow.interceptor.UpdateHeaderInterceptor</class>

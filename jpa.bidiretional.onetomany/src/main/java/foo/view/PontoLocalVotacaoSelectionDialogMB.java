@@ -9,6 +9,10 @@ import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import br.jus.tre_pa.jbase.jsf.template.AbstractMultipleSelectionDialogPageBean;
 import br.jus.tre_pa.jbase.jsf.workflow.annotation.Hide;
 import br.jus.tre_pa.jbase.jsf.workflow.annotation.On;
+import br.jus.tre_pa.jbase.jsf.workflow.annotation.Show;
+import br.jus.tre_pa.jbase.jsf.workflow.annotation.UpdateBody;
+import br.jus.tre_pa.jbase.jsf.workflow.annotation.UpdateFooter;
+import br.jus.tre_pa.jbase.jsf.workflow.annotation.UpdateHeader;
 import br.jus.tre_pa.jbase.jsf.workflow.annotation.UpdateRegion;
 import foo.business.LocalVotacaoBC;
 import foo.domain.LocalVotacao;
@@ -24,6 +28,15 @@ public class PontoLocalVotacaoSelectionDialogMB extends AbstractMultipleSelectio
 
 	@Inject
 	private LocalVotacaoBC bc;
+
+	@Override
+	@Show
+	@UpdateBody
+	@UpdateFooter
+	@UpdateHeader
+	public String load(PontoTransmissao bean) {
+		return super.load(bean);
+	}
 
 	/**
 	 * 
@@ -61,15 +74,6 @@ public class PontoLocalVotacaoSelectionDialogMB extends AbstractMultipleSelectio
 	@Override
 	protected void onCancelBean(@Observes @On("ponto.transmissao.edit.dialog.cancel") PontoTransmissao bean) {
 		clear();
-	}
-
-	/**
-	 * 
-	 * @param bean
-	 */
-	@Override
-	protected void onLoadBean(@Observes @On("ponto.transmissao.edit.dialog.load") PontoTransmissao bean) {
-		load(bean);
 	}
 
 }

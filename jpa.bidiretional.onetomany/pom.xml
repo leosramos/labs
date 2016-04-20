@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>br.jus.tre_pa.jbase</groupId>
 			<artifactId>jbase</artifactId>
-			<version>1.0</version>
+			<version>1.3</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

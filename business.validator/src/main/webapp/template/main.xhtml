@@ -10,10 +10,12 @@
 
 <h:head>
 	<title>#{messages['main.app.title']}</title>
-	<link
-		type="text/css"
-		rel="stylesheet"
-		href="css/styles.css" />
+	<h:outputScript
+		library="js/jbase"
+		name="jquery-ui-1.11.4.min.js" />
+	<h:outputScript
+		library="js/jbase"
+		name="jbase.js" />
 </h:head>
 
 <h:body style="background-color:#f1f1f1">
@@ -21,9 +23,7 @@
 		<tr>
 			<td
 				height="70"
-				align="left"><a href="index.jsf"><img
-					src="images/logo.png"
-					border="0" /></a>
+				align="left"><a href="index.jsf"></a>
 				<div style="float: right;">
 					<h:form
 						id="language_form"

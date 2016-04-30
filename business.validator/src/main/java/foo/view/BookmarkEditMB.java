@@ -8,6 +8,7 @@ import br.gov.frameworkdemoiselle.template.AbstractEditPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.jus.tre_pa.jbase.jsf.validation.annotation.JSFValidationHandler;
 import br.jus.tre_pa.jbase.jsf.workflow.annotation.UIAction;
+import br.jus.tre_pa.jbase.jsf.workflow.context.UIService;
 import foo.business.BookmarkBC;
 import foo.domain.Bookmark;
 
@@ -19,6 +20,9 @@ public class BookmarkEditMB extends AbstractEditPageBean<Bookmark, Long> {
 
 	@Inject
 	private BookmarkBC bookmarkBC;
+
+	@Inject
+	private UIService service;
 
 	@Override
 	@Transactional
@@ -47,5 +51,10 @@ public class BookmarkEditMB extends AbstractEditPageBean<Bookmark, Long> {
 	@Override
 	protected Bookmark handleLoad(Long id) {
 		return this.bookmarkBC.load(id);
+	}
+
+	public String highlight() {
+		service.hightlightEffect("form1:f1");
+		return null;
 	}
 }

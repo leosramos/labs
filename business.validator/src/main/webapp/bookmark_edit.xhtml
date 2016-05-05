@@ -12,9 +12,13 @@
 			prependId="false">
 			<p:toolbar>
 				<p:toolbarGroup align="left">
+					<!-- HIGHLIGHT -->
 					<p:commandButton
 						value="Highlight"
 						action="#{bookmarkEditMB.highlight}" />
+					<p:commandButton
+						value="Prepend"
+						onclick="addHello('container1_id'); return false;" />
 					<p:commandButton
 						value="#{messages['button.save']}"
 						action="#{bookmarkEditMB.insert}"
@@ -93,5 +97,11 @@
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>
+	
+		<h:panelGroup
+			id="container1_id"
+			style="display:block; background-color: white; width: 300px; height: 300px"></h:panelGroup>
+	
 	</ui:define>
+	
 </ui:composition>

@@ -1,7 +1,7 @@
 package foo.jpql;
 
 import foo.jpql.model.OperatorType;
-import foo.jpql.model.PredicateUngroupedExpression;
+import foo.jpql.model.PredicateExpression;
 import foo.jpql.model.UnaryPredicate;
 import foo.jpql.model.WhereStatement;
 
@@ -12,9 +12,9 @@ import foo.jpql.model.WhereStatement;
 public class App {
 	public static void main(String[] args) {
 		WhereStatement whereStatement = new WhereStatement();
-		PredicateUngroupedExpression ungroupedExpression1 = new PredicateUngroupedExpression();
+		PredicateExpression predicateExpression1 = new PredicateExpression();
 		
-		whereStatement.getPredicateExpressions().add(ungroupedExpression1);
+		whereStatement.getPredicateExpressions().add(predicateExpression1);
 		
 		UnaryPredicate unaryPredicate1 = new UnaryPredicate();
 		unaryPredicate1.setAttrName("status");
@@ -24,8 +24,8 @@ public class App {
 		unaryPredicate2.setAttrName("name");
 		unaryPredicate2.setOperator(OperatorType.LIKE);
 		
-		ungroupedExpression1.getPredicates().add(unaryPredicate1);
-		ungroupedExpression1.getPredicates().add(unaryPredicate2);
+		predicateExpression1.getPredicates().add(unaryPredicate1);
+		predicateExpression1.getPredicates().add(unaryPredicate2);
 		
 		System.out.println(whereStatement.buildFragment());
 	}

@@ -11,6 +11,16 @@ public class Predicate extends AbstractJPQLFragment {
 
 	private OperatorType operator;
 
+	public Predicate() {
+		super();
+	}
+
+	public Predicate(String attrName, OperatorType operator) {
+		super();
+		this.attrName = attrName;
+		this.operator = operator;
+	}
+
 	@Override
 	public String buildFragment() {
 		return null;

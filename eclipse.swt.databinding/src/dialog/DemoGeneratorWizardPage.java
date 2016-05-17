@@ -4,7 +4,6 @@ import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -12,19 +11,19 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import model.GeneratorModel;
+import jtools.eclipse.core.generator.GeneratorWizardPage;
+import model.DemoGeneratorModel;
 
-public class GeneratorWizardPage extends WizardPage {
+public class DemoGeneratorWizardPage extends GeneratorWizardPage<DemoGeneratorModel> {
 
-	protected GeneratorWizardPage(String pageName) {
-		super(pageName);
+	protected DemoGeneratorWizardPage(String pageName, DemoGeneratorModel model) {
+		super(pageName, model);
 	}
 
 	@Override
 	public void createControl(Composite parent) {
-
 		DataBindingContext ctx = new DataBindingContext();
-
+		
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);
@@ -39,7 +38,7 @@ public class GeneratorWizardPage extends WizardPage {
 
 		IObservableValue target = WidgetProperties.text(SWT.Modify).observe(containerText);
 
-		IObservableValue model = BeanProperties.value(GeneratorModel.class, "name").observe(GeneratorModel.getInstance());
+		IObservableValue model = BeanProperties.value(DemoGeneratorModel.class, "name").observe(DemoGeneratorModel.getInstance());
 
 		ctx.bindValue(target, model);
 

@@ -7,8 +7,8 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import dialog.GeneratorWizard;
-import model.GeneratorModel;
+import dialog.DemoGeneratorWizard;
+import model.DemoGeneratorModel;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -29,9 +29,9 @@ public class SampleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
-		WizardDialog dialog = new WizardDialog(window.getShell(), new GeneratorWizard());
+		WizardDialog dialog = new WizardDialog(window.getShell(), new DemoGeneratorWizard());
 		
-		GeneratorModel.getInstance().setName("Projeto ABC");
+		DemoGeneratorModel.getInstance().setName("Projeto ABC");
 		
 		dialog.open();
 

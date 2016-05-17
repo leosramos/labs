@@ -16,6 +16,15 @@ public class PredicateExpression extends AbstractJPQLFragment {
 
 	private JunctionOperator junctionOperator = JunctionOperator.AND;
 
+	@Override
+	public String buildFragment() {
+		List<String> predicatesFragments = new ArrayList<>();
+		for (Predicate predicate : predicates) {
+			predicatesFragments.add(predicate.buildFragment());
+		}
+		return StringUtils.join(predicatesFragments, junctionOperator.getJunctionOperatorValue());
+	}
+
 	public List<Predicate> getPredicates() {
 		if (this.predicates == null) {
 			this.predicates = new ArrayList<>();
@@ -33,15 +42,6 @@ public class PredicateExpression extends AbstractJPQLFragment {
 
 	public void setJunctionOperator(JunctionOperator junctionOperator) {
 		this.junctionOperator = junctionOperator;
-	}
-
-	@Override
-	public String buildFragment() {
-		List<String> predicatesFragments = new ArrayList<>();
-		for (Predicate predicate : predicates) {
-			predicatesFragments.add(predicate.buildFragment());
-		}
-		return StringUtils.join(predicatesFragments, junctionOperator.getJunctionOperatorValue());
 	}
 
 }
